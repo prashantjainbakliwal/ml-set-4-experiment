@@ -18,13 +18,13 @@ X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X = sc.fit_transform(X)
-def predict_note_authentication(UserID, Gender,Age,EstimatedSalary):
-  output= model.predict(sc.transform([[Gender,Age,EstimatedSalary]]))
+def predict_note_authentication(age, Gender,glucose,bp):
+  output= model.predict(sc.transform([[age, Gender,glucose,bp]]))
   print("Purchased", output)
   if output==[1]:
-    prediction="Item will be purchased"
+    prediction="have diabitise"
   else:
-    prediction="Item will not be purchased"
+    prediction="not have diabetise"
   print(prediction)
   return prediction
 def main():
@@ -43,16 +43,16 @@ def main():
     st.markdown(html_temp,unsafe_allow_html=True)
     st.header("Diabitise prediction")
     
-    UserID = st.text_input("UserID","")
+    UserID = st.text_input("name","")
     
     #Gender1 = st.select_slider('Select a Gender Male:1 Female:0',options=['1', '0'])
     Gender1 = st.number_input('Insert Gender Male:1 Female:0')
     Age = st.number_input('Insert a Age',18,60)
    
-    EstimatedSalary = st.number_input("Insert Estimated Salary",15000,150000)
+    EstimatedSalary = st.number_input("insert value",15000,150000)
     resul=""
     if st.button("Predict"):
-      result=predict_note_authentication(UserID, Gender1,Age,EstimatedSalary)
+      result=predict_note_authentication(age, Gender,glucose,bp)
       st.success('Model has predicted {}'.format(result))
       
     if st.button("About"):
