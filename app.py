@@ -41,7 +41,7 @@ def main():
    </div>
    """
     st.markdown(html_temp,unsafe_allow_html=True)
-    st.header("Item Purchase Prediction using Logistic Classification")
+    st.header("Diabitise prediction")
     
     UserID = st.text_input("UserID","")
     
